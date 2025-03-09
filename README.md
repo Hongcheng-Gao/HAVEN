@@ -1,4 +1,5 @@
-# HAVEN: Exploring Hallucination of Large Multimodal Models in Video Understanding: Benchmark, Analysis and Mitigation
+# HAVEN
+
 <p align="center">
   <a href="">Website</a> •
   <a href="">Paper</a> •

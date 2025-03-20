@@ -28,7 +28,7 @@ To address the concern above, we proposed a benchmark for **HAllucination in Vid
 
 
 ### 📈Data
-Our video data comprises videos from three public video datasets ([`COIN`](https://coin-dataset.github.io/), [`ActivityNet`](http://activity-net.org/download.html), and [`Sports1M`](https://github.com/gtoderici/sports-1m-dataset) and manually collected video clips from Internet. You can directly download the video from our provided source link.
+Our video data comprises videos from three public video datasets ([COIN](https://coin-dataset.github.io/), [ActivityNet](http://activity-net.org/download.html), and [Sports1M](https://github.com/gtoderici/sports-1m-dataset) and manually collected video clips from Internet. You can directly download the video from our provided source link.
 
 Here is an example of our data:
 ```json
@@ -61,7 +61,7 @@ Here is an example of our data:
   - *Binary-choice*: A question with two answer choices (e.g., True/False, Yes/No).  
   - *Multiple-choice*: A question with multiple answer choices, requiring the selection of the most appropriate one.  
   - *Short-answer*: A question requiring a direct response without predefined options.  
-- **Source Link**: The original video file path. If the video is from ActivityNet, it can be downloaded from **[http://activity-net.org/download.html]**.  
+- **Source Link**: The original video file path. If the video is from ActivityNet, it can be downloaded from [here](http://activity-net.org/download.html).  
 - **Begin, End**: Indicate the start and end timestamps of the relevant video segment.  
 - **Video Path**: The unique identifier for the video. The same Video Path across multiple entries means they reference the same video clip.  
 - **Group_id**: A group identifier for related questions, used to analyze model consistency across different questions related to the same content. 

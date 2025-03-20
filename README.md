@@ -28,7 +28,7 @@ To address the concern above, we proposed a benchmark for **HAllucination in Vid
 
 
 ### 📈Data
-Our video data comprises videos from three public video datasets (COIN [https://coin-dataset.github.io/], ActivityNet[http://activity-net.org/download.html], and Sports1M [https://github.com/gtoderici/sports-1m-dataset] and manually collected video clips from Internet. You can directly download the video from our provided source link.
+Our video data comprises videos from three public video datasets ([`COIN`](https://coin-dataset.github.io/), [`ActivityNet`](http://activity-net.org/download.html), and [`Sports1M`](https://github.com/gtoderici/sports-1m-dataset) and manually collected video clips from Internet. You can directly download the video from our provided source link.
 
 Here is an example of our data:
 ```json

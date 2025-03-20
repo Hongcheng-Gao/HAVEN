@@ -33,17 +33,17 @@ Our video data comprises videos from three public video datasets ([`COIN`](https
 Here is an example of our data:
 ```json
 {
-    "Index": 1144,
-    "Question": "What tools are the individuals in the video utilizing to paint? A. Brush. B. Airbrush. C. Paintbrush.",
-    "Answer": "B",
-    "Causes": "Conflict with prior",
-    "Aspects": "Object",
-    "Form": "Multiple-choice",
-    "Source Link": "v__8Zk9dfBgPg.mp4",
-    "Begin": "0:17",
-    "End": "1:10",
-    "Video Path": "ActivityNet0121",
-    "activitynet_group_id": "ActivityNet_group0121"
+  "Index": 1,
+  "Question": "Are the individuals in the video sewing garments with thread?",
+  "Answer": "No",
+  "Causes": "Conflict with prior",
+  "Aspects": "Event",
+  "Form": "Binary-choice",
+  "Source Link": "https://www.youtube.com/embed/xZecGPPhbHE",
+  "Begin": "0:29",
+  "End": "0:40",
+  "Video Path": "Coin0001",
+  "Group_id": "Coin_group0001"
 }
 ```
 
@@ -64,7 +64,7 @@ Here is an example of our data:
 - **Source Link**: The original video file path. If the video is from ActivityNet, it can be downloaded from **[http://activity-net.org/download.html]**.  
 - **Begin, End**: Indicate the start and end timestamps of the relevant video segment.  
 - **Video Path**: The unique identifier for the video. The same Video Path across multiple entries means they reference the same video clip.  
-- **activitynet_group_id**: A group identifier for related questions, used to analyze model consistency across different questions related to the same content. 
+- **Group_id**: A group identifier for related questions, used to analyze model consistency across different questions related to the same content. 
   - Identical `group_id` values indicate different variations of the same question.  
   - The prefix of `group_id` indicates the dataset from which the question originates. For example:  
     - `coin_groupXXXX` refers to the *COIN* dataset.  

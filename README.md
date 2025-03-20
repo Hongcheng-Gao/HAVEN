@@ -7,7 +7,7 @@
 </p>
 
 ## 📰 News
-- **2025-03-20**: We have released the code and 1,200 questions.
+- **2025-03-20**: We have released 1,200 questions and evaluation code.
 
 
 

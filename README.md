@@ -47,7 +47,7 @@ Here is an example of our data:
 }
 ```
 
-### Explanation of Fields:  
+#### Explanation of Fields:  
 - **Index**: The global question index, indicating the sequential order of all benchmark questions.  
 - **Causes**: Represents the cause of hallucination, corresponding to the categories introduced in the paper:  
   - *Conflict with prior knowledge*: The model generates answers that contradict well-established knowledge.  

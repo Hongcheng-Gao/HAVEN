@@ -3,7 +3,7 @@
 <p align="center">
   <a href="">Website</a> •
   <a href="">Paper</a> •
-  <a href="">Data</a> 
+  <a href="./Data/test_data.json">Data</a> 
 </p>
 
 ## 📰 News

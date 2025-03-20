@@ -7,7 +7,7 @@
 </p>
 
 ## 📰 News
-- **2025-03-20**: We have released 1,200 questions and evaluation code.
+- **2025-03-20**: We released a subset of HAVEN dataset containing 1,200 questions and evaluation code. 
 
 
 

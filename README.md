@@ -22,9 +22,9 @@ With advancements in multi-modal technologies, numerous LMMs now support video p
 
 To address the concern above, we proposed a benchmark for **HAllucination in Video UndErstaNding (HAVEN)**. HAVEN is meticulously designed to quantitatively evaluate the hallucination in video understanding for LMMs, which is constructed based on the following dimensions:
 
-(i) Three causes of hallucinations: conflict with prior knowledge, in-context conflict, and inherent capability deficiencies of LMMs.  
-(ii) Three types of hallucination aspects in a video: object, scene, and event.  
-(iii) Three formats of questions: binary-choice, multiple-choice, and short-answer.
+- Three **causes** of hallucinations: conflict with prior knowledge, in-context conflict, and inherent capability deficiencies of LMMs.
+- Three types of hallucination **aspects** in a video: object, scene, and event.
+- Three **formats** of questions: binary-choice, multiple-choice, and short-answer.
 
 
 ### 📈Data

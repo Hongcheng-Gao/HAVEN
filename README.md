@@ -28,8 +28,24 @@ To address the concern above, we proposed a benchmark for HAllucination in Video
 
 
 ### Data
+You can use
 
-
+Here is an example of our questions:
+```json
+{
+    "Index": 1144,
+    "Question": "What tools are the individuals in the video utilizing to paint? A. Brush. B. Airbrush. C. Paintbrush.",
+    "Answer": "B",
+    "Causes": "Conflict with prior",
+    "Aspects": "Object",
+    "Form": "Multiple-choice",
+    "Source Link": "v__8Zk9dfBgPg.mp4",
+    "Begin": "0:17",
+    "End": "1:10",
+    "Video Path": "ActivityNet0121",
+    "activitynet_group_id": "ActivityNet_group0121"
+}
+```
 
 ## 🚀 Quickstart
 

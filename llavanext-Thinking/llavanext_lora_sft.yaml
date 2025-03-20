@@ -1,0 +1,15 @@
+### Note: DO NOT use quantized model or quantization_bit when merging lora adapters
+
+### model
+model_name_or_path: llava-hf/LLaVA-NeXT-Video-7B-DPO-hf
+adapter_name_or_path: saves_new/llava-next
+template: llava_next_video
+finetuning_type: lora
+trust_remote_code: true
+
+
+### export
+export_dir: models/llava_next_video_lora_sft
+export_size: 2
+export_device: cpu
+export_legacy_format: false

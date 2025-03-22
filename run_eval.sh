@@ -15,7 +15,7 @@ MODEL_LIST=(
     "Video-LLaMA-2-13B"
     "LLaMA-VID-13B"
     "PLLaVA-13B"
-    "LLaVA-NeXT-Video-34B"pyt
+    "LLaVA-NeXT-Video-34B"
     "Valley"
 )
 VIDEO_PATH="path/to/video/files"

@@ -1,21 +1,17 @@
 import base64
 import requests
-import json
 import pandas as pd
 import argparse
 from tqdm import tqdm
 import os
 from transformers import set_seed
 def GPT_eval(args):
-    start_idx = args.start
-    end_idx = args.end if args.end is not None else len(df)
     # Data Import
-    dataset = args.dataset
     TESTING_MODEL=args.model_name
     output_file = args.output_file
     if not os.path.exists(output_file):
         os.makedirs(output_file)
-    save_path = f'{output_file}/COT_Grade_{TESTING_MODEL}_{dataset}_{start_idx}.csv'
+    save_path = f'{output_file}/{TESTING_MODEL}_eval_result.csv'
     answer_path = args.answer_file
     df = pd.read_csv(answer_path, encoding='ISO-8859-1')
     answer = df['Answer']
@@ -30,7 +26,7 @@ def GPT_eval(args):
         "Authorization": f"Bearer {api_key}"
     }
 
-    for idx in tqdm(range(start_idx, end_idx)):
+    for idx in tqdm(range(len(df))):
         if q_form[idx] == 'choice':
             prompt = f'''This is a multiple-choice question. Based on the given question and reasoning process, extract the corresponding answer of the reasoning process.\n
                         Question: {question[idx]} \n                  
@@ -196,14 +192,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--model_name", type=str, default="LLaVA-NeXT-Video")
-    parser.add_argument("--dataset", type=str, default="coin", choices=["sports1m", "activitynet", "coin", "youtube"])
     parser.add_argument("--output_file", type=str, default="")
     parser.add_argument("--answer_file", type=str, default="")
     parser.add_argument("--api_key", type=str, default="")
     parser.add_argument("--GPT_url", type=str, default="")
-    parser.add_argument("--start", type=int, default=0, help="Start index of processing")
-    parser.add_argument("--end", type=int, default=None, help="End index of processing (exclusive)")
-    parser.add_argument("--cot", type=str, default="COT", help="Set this to cot for evaluating model with COT")
     args = parser.parse_args()
     
     set_seed(args.seed)

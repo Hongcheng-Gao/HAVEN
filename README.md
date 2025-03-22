@@ -75,17 +75,26 @@ Here is an example of our data:
 
 
 ## 🚀 Quickstart
-**👀 How to test on your models**
+
+### 📜 Key Scripts 
 - **Inferring Script** (`Infer.py`) – This script runs the model on the dataset.  
-- **Judging Script** (`Judge.py`) – Uses GPT-4o-mini to assess the model’s predictions.  
-- **Execute Everything with One Command** – Simply run:  
+- **Judging Script** (`Judge.py`) – Uses GPT-4o-mini to assess the model’s predictions.
+
+### 🏗 Running the Scripts 
+**Testing a single Model**
+- **🛠️ Setup Before Running** - Edit parameters in `run_eval_single_model.sh`and choose corresponding model name.
+- **▶ Run with One Command** – Simply run:  
+   ```bash
+   bash run_eval_single_model.sh
+   ```
+**Testing all Model**
+- **🛠️ Setup Before Running** - Edit parameters in `run_eval_single_model.sh`(No need to specify model names!).
+- **▶ Run with One Command** – Simply run:  
    ```bash
    bash run_eval.sh
    ```
-**🔧 Setup Before Running** 
-- Make sure to edit `run_eval.sh` to configure parameters.  
-
-**📂 Output Files**  
+   
+### 📂 Output Files
 - **Inference results**: `{args.model_name}_infer_result.json`  
 - **Judgement results**: `{args.model_name}_judge_result.json`  
 

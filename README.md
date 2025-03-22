@@ -81,13 +81,13 @@ Here is an example of our data:
 - **Judging Script** (`Judge.py`) – Uses GPT-4o-mini to assess the model’s predictions.
 
 ### 🏗 Running the Scripts 
-**1️⃣ Testing a single Model**
+**Testing a single Model**
 - **🛠️ Setup Before Running** - Edit parameters in `run_eval_single_model.sh`and choose corresponding model name.
 - **▶ Run with One Command** – Simply run:  
    ```bash
    bash run_eval_single_model.sh
    ```
-**2️⃣ Testing all Models**
+**Testing all Models**
 - **🛠️ Setup Before Running** - Edit parameters in `run_eval_single_model.sh`(No need to specify model names!).
 - **▶ Run with One Command** – Simply run:  
    ```bash

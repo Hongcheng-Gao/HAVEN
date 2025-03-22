@@ -76,8 +76,19 @@ Here is an example of our data:
 
 ## 🚀 Quickstart
 **How to test on your models**
-Use `tet.py` to evaluate your model. All models tested in the paper are included in `tet.py`, so you can directly use it for evaluation.
-   
+1. **Run the Testing Script** (`Test.py`) – This script runs the model on the dataset.  
+2. **Run the Evaluation Script** (`Eval.py`) – Uses GPT-4o-mini to assess the model’s predictions.  
+3. **Execute Everything with One Command** – Simply run:  
+   ```bash
+   bash run_test_eval.sh
+   ```
+**🔧 Setup Before Running** 
+- Make sure to edit `run_test_eval.sh` to configure parameters.  
+
+**📂 Output Files**  
+- **Test results**: `{args.model_name}_test_result.json`  
+- **Evaluation results**: `{args.model_name}_eval_result.json`  
+
 
 
 ## 🙇‍♂️ Acknowledgement

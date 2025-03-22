@@ -1,9 +1,9 @@
-import base64
 import requests
 import pandas as pd
 import argparse
 from tqdm import tqdm
 import os
+import json
 from transformers import set_seed
 def GPT_eval(args):
     # Data Import
@@ -11,13 +11,9 @@ def GPT_eval(args):
     output_file = args.output_file
     if not os.path.exists(output_file):
         os.makedirs(output_file)
-    save_path = f'{output_file}/{TESTING_MODEL}_eval_result.csv'
-    answer_path = args.answer_file
-    df = pd.read_csv(answer_path, encoding='ISO-8859-1')
-    answer = df['Answer']
-    res = df['pred_ans']
-    q_form = df['Form']
-    question = df['Question']
+    save_path = f'{output_file}/{TESTING_MODEL}_eval_result.json'
+    with open(args.answer_file, "r", encoding="utf-8") as f:
+        answer_file = json.load(f)
 
     # OpenAI API Key
     api_key = args.api_key
@@ -26,11 +22,11 @@ def GPT_eval(args):
         "Authorization": f"Bearer {api_key}"
     }
 
-    for idx in tqdm(range(len(df))):
-        if q_form[idx] == 'choice':
+    for idx in tqdm(range(len(answer_file))):
+        if answer_file[idx]['Form'] == 'Multiple-choice':
             prompt = f'''This is a multiple-choice question. Based on the given question and reasoning process, extract the corresponding answer of the reasoning process.\n
-                        Question: {question[idx]} \n                  
-                        Reasoning Process: {res[idx]} \n                                                   
+                        Question: {answer_file[idx]['Question']} \n                  
+                        Reasoning Process: {answer_file[idx]['Model Answer']} \n                                                   
                         Instructions: \n
                         1. Identify the correct answer based on the reasoning process.\n
                         2. If the reasoning process directly mentions one of the given choices (A, B, or C), return the corresponding letter along with the full text of that option (e.g., "A. Option text").\n
@@ -54,7 +50,7 @@ def GPT_eval(args):
                 extract_answer = extract_answer_2["choices"][0]["message"]["content"].strip()
             except KeyError:
                 extract_answer = "F"
-            df.loc[idx, f"Extract Answer"] = extract_answer
+            answer_file[idx]["Extract Answer"] = extract_answer
             prompt_v = f''' 
                 You are a professional homework grading tool. I will provide you with four rules for grading: \n 
                     1. This is a multiple-choice question. Judge the correctness based on the selected lettera and actual content of the provided answers. \n 
@@ -63,8 +59,8 @@ def GPT_eval(args):
                     4. If the predicted answer matches the correct answer in meaning, even if it is phrased differently, consider it correct. \n 
                     For example, if the prediction conveys the same meaning as the standard answer, you should respond with 1. \n 
                     Based on the question and its standard answer, is the prediction correct? If yes, return only 1; otherwise, return only 0. \n 
-                    Question: {question[idx]} \n
-                    Standard Answer: {answer[idx]} \n 
+                    Question: {answer_file[idx]['Question']} \n
+                    Standard Answer: {answer_file[idx]['Answer']} \n 
                     The Predicted Answer: {extract_answer} \n\n '''
                 
             payload_2 = {
@@ -84,14 +80,15 @@ def GPT_eval(args):
                 correctness = correct_pro["choices"][0]["message"]["content"].strip()
             except KeyError:
                 correctness = "F"
-            print(f"Index: {idx}, Standard Answer: {answer[idx]}, Predicted Answer: {res[idx]}, Extracted answer: {extract_answer}, Correct: {correctness}")            
-            df.loc[idx, f"Correctness"] = correctness
-            df.to_csv(save_path, index=False)
+            print(f"Index: {idx}, Standard Answer: {answer_file[idx]['Answer']}, Extracted answer: {extract_answer}, Correct: {correctness}")
+            answer_file[idx]["Correctness"] = correctness
+            with open(save_path, "w", encoding="utf-8") as f:
+                json.dump(answer_file, f, indent=4, ensure_ascii=False)
 
-        elif q_form[idx] == 'tf':
+        elif answer_file[idx]['Form'] == 'Binary-choice':
             prompt = f'''This is a multiple-choice question. Based on the given question and reasoning process, extract the corresponding answer of the reasoning process.\n
-                        Question: {question[idx]} \n                  
-                        Reasoning Process: {res[idx]} \n                                                   
+                        Question: {answer_file[idx]['Question']} \n                  
+                        Reasoning Process: {answer_file[idx]['Model Answer']} \n                                                     
                         Instructions: \n
                         1. Identify the correct answer based on the reasoning process.\n
                         2. If the reasoning process explicitly states "yes" or "no", return direct "yes" or "no" \n
@@ -113,7 +110,7 @@ def GPT_eval(args):
                 extract_answer = extract_answer_2["choices"][0]["message"]["content"].strip()
             except KeyError:
                 extract_answer = "F"
-            df.loc[idx, f"Extract Answer"] = extract_answer   
+            answer_file[idx]["Extract Answer"] = extract_answer
             prompt_v = f''' 
                 You are a professional homework grading tool. I will provide you with four rules for grading\n
                     1. This is a yes/no question. The Standard Answer is only Yes/No, please directly compare the standard answer with 'yes' or 'no' in the predicted answer.\n
@@ -121,8 +118,8 @@ def GPT_eval(args):
                     3. 1 means correct (they are the same), 0 means wrong (they are different). \n
                     For example, if the prediction conveys the same meaning as the standard answer, you should respond with 1.\n 
                     Based on the question, is the prediction correct? If yes, only return 1, otherwise only return 0.\n\n
-                    Question: {question[idx]} \n
-                    Standard Answer: {answer[idx]}\n
+                    Question: {answer_file[idx]['Question']} \n
+                    Standard Answer: {answer_file[idx]['Answer']} \n
                     The Predicted Answer: {extract_answer}\n'''
             
             payload_2 = {
@@ -142,9 +139,10 @@ def GPT_eval(args):
                 correctness = correct_pro["choices"][0]["message"]["content"].strip()
             except KeyError:
                 correctness = "F"
-            print(f"Index: {idx}, Standard Answer: {answer[idx]}, Predicted Answer: {res[idx]}, Extracted answer: {extract_answer}, Correct: {correctness}")
-            df.loc[idx, f"Correctness"] = correctness
-            df.to_csv(save_path, index=False)
+            print(f"Index: {idx}, Standard Answer: {answer_file[idx]['Answer']}, Extracted answer: {extract_answer}, Correct: {correctness}")
+            answer_file[idx]["Correctness"] = correctness
+            with open(save_path, "w", encoding="utf-8") as f:
+                json.dump(answer_file, f, indent=4, ensure_ascii=False)
 
         else:
             prompt_v = f''' 
@@ -157,9 +155,9 @@ def GPT_eval(args):
                     6. 1 means correct, and 0 means incorrect.\n
                     For example, if the prediction conveys the same meaning as the standard answer, even if phrased differently, you should respond with 1.\n  
                     Based on the question, is the prediction correct? If yes, return only 1; otherwise, return only 0. \n\n
-                    Question: {question[idx]} \n
-                    Standard Answer: {answer[idx]}\n
-                    The Predicted Answer: {res[idx]}\n'''
+                    Question: {answer_file[idx]['Question']} \n
+                    Standard Answer: {answer_file[idx]['Answer']} \n
+                    The Predicted Answer: {answer_file[idx]['Model Answer']}\n'''
             
             payload_2 = {
                 "model": "gpt-4o-mini",
@@ -180,23 +178,23 @@ def GPT_eval(args):
                 correctness = correct_pro["choices"][0]["message"]["content"].strip()
             except KeyError:
                 correctness = "F"
-            extract_answer = ""
+            print(f"Index: {idx}, Standard Answer: {answer_file[idx]['Answer']}, Extracted answer: Same as model answer for short answer question, Correct: {correctness}")
+            answer_file[idx]["Extract Answer"] = "Same as Model Answer for short answer question"
+            answer_file[idx]["Correctness"] = correctness
+            with open(save_path, "w", encoding="utf-8") as f:
+                json.dump(answer_file, f, indent=4, ensure_ascii=False)
 
-            print(f"Index: {idx}, Standard Answer: {answer[idx]}, Predicted Answer: {res[idx]}, Correct: {correctness}")
-            df.loc[idx, f"Extract Answer"] = extract_answer
-            df.loc[idx, f"Correctness"] = correctness
-            df.to_csv(save_path, index=False)
+
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--model_name", type=str, default="LLaVA-NeXT-Video")
-    parser.add_argument("--output_file", type=str, default="")
     parser.add_argument("--answer_file", type=str, default="")
+    parser.add_argument("--output_file", type=str, default="")
     parser.add_argument("--api_key", type=str, default="")
     parser.add_argument("--GPT_url", type=str, default="")
     args = parser.parse_args()
-    
     set_seed(args.seed)
     GPT_eval(args)

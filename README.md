@@ -75,10 +75,10 @@ Here is an example of our data:
 
 
 ## 🚀 Quickstart
-**How to test on your models**
-1. **Run the Testing Script** (`Test.py`) – This script runs the model on the dataset.  
-2. **Run the Evaluation Script** (`Eval.py`) – Uses GPT-4o-mini to assess the model’s predictions.  
-3. **Execute Everything with One Command** – Simply run:  
+**👀 How to test on your models**
+- **Testing Script** (`Test.py`) – This script runs the model on the dataset.  
+- **Evaluation Script** (`Eval.py`) – Uses GPT-4o-mini to assess the model’s predictions.  
+- **Execute Everything with One Command** – Simply run:  
    ```bash
    bash run_test_eval.sh
    ```

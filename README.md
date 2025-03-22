@@ -75,7 +75,9 @@ Here is an example of our data:
 
 
 ## 🚀 Quickstart
-
+**How to test on your models**
+Use `tet.py` to evaluate your model. All models tested in the paper are included in `tet.py`, so you can directly use it for evaluation.
+   
 
 
 ## 🙇‍♂️ Acknowledgement

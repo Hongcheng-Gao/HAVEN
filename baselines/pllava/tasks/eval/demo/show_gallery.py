@@ -72,8 +72,8 @@ with gr.Blocks() as demo:
             gr.Markdown(f"### From Saved Results Directory {args.root_dir}")
           
         with gr.Column(scale=2):
-            result_dir = gr.Dropdown(label='Test Result Path')
-            button_reload = gr.Button(value='Reload From The Evaluation/Inference Root Directory')
+            result_dir = gr.Dropdown(label='Infer Result Path')
+            button_reload = gr.Button(value='Reload From The Judge/Infer Root Directory')
 
 
 

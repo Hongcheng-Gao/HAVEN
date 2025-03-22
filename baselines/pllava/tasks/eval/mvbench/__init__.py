@@ -86,7 +86,7 @@ class MVBenchDataset(EvalDataset):
         "Character Order": ("character_order.json", "DATAS/MVBench/video/perception/videos/", "video", False),
         "Egocentric Navigation": ("egocentric_navigation.json", "DATAS/MVBench/video/vlnqa/", "video", False),
         "Episodic Reasoning": ("episodic_reasoning.json", "DATAS/MVBench/video/tvqa/frames_fps3_hq/", "frame", True),  # has start & end, read frame
-        "Counterfactual Inference": ("counterfactual_inference.json", "DATAS/MVBench/video/clevrer/video_validation/", "video", False),
+        "Counterfactual Infer": ("counterfactual_inference.json", "DATAS/MVBench/video/clevrer/video_validation/", "video", False),
     }
     data_dir = "DATAS/MVBench/json"
 

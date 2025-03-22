@@ -103,7 +103,7 @@ class MVBenchDataset(EvalDataset):
         "Egocentric Navigation": ("egocentric_navigation.json", "playground/data/mvbench/vlnqa/", "video", False),
         # has start & end, read frame
         "Episodic Reasoning": ("episodic_reasoning.json", "playground/data/mvbench/tvqa/frames_fps3_hq/", "frame", True),
-        "Counterfactual Inference": ("counterfactual_inference.json", "playground/data/mvbench/clevrer/video_validation/", "video", False),
+        "Counterfactual Infer": ("counterfactual_inference.json", "playground/data/mvbench/clevrer/video_validation/", "video", False),
     }
     data_dir = "playground/data/mvbench/json"
 

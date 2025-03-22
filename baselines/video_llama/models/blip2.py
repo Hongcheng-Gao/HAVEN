@@ -110,7 +110,7 @@ def compute_sim_matrix(model, data_loader, **kwargs):
     k_test = kwargs.pop("k_test")
 
     metric_logger = MetricLogger(delimiter="  ")
-    header = "Evaluation:"
+    header = "Judge:"
 
     logging.info("Computing features for evaluation...")
     start_time = time.time()
@@ -217,6 +217,6 @@ def compute_sim_matrix(model, data_loader, **kwargs):
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
-    logging.info("Evaluation time {}".format(total_time_str))
+    logging.info("Judge time {}".format(total_time_str))
 
     return score_matrix_i2t.cpu().numpy(), score_matrix_t2i.cpu().numpy()

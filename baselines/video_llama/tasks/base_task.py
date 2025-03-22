@@ -82,7 +82,7 @@ class BaseTask:
 
     def evaluation(self, model, data_loader, cuda_enabled=True):
         metric_logger = MetricLogger(delimiter="  ")
-        header = "Evaluation"
+        header = "Judge"
         # TODO make it configurable
         print_freq = 10
 

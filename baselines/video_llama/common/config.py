@@ -346,7 +346,7 @@ def create_runner_config_validator():
     validator.add_argument(
         "batch_size_eval",
         type=int,
-        help="Evaluation batch size, including validation and testing.",
+        help="Judge batch size, including validation and testing.",
     )
     # add arguments for number of workers for data loading
     validator.add_argument(
@@ -455,7 +455,7 @@ def create_runner_config_validator():
         "inference_method",
         type=str,
         choices=["genearte", "rank"],
-        help="""Inference method to use for question answering. If rank, requires a answer list.""",
+        help="""Infer method to use for question answering. If rank, requires a answer list.""",
     )
 
     # ====== model specific ======

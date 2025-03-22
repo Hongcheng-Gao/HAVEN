@@ -105,7 +105,7 @@ def save_results(result_list, save_path, model="gpt-3.5-turbo-0125"):
     dump_json(result_list, save_path, 'inference_results.json')
     with Pool(7) as pool:
         func = partial(chatgpt_eval, model=model)
-        result_list = [ res for res in tqdm.tqdm(pool.imap_unordered(func, result_list), total=len(result_list), desc='Language Chat Model Automated Evaluation...')]
+        result_list = [ res for res in tqdm.tqdm(pool.imap_unordered(func, result_list), total=len(result_list), desc='Language Chat Model Automated Judge...')]
 
     # result_list = [chatgpt_eval(res, model=model) for res in result_list]
 

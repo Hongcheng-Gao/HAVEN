@@ -104,12 +104,12 @@ with gr.Blocks(title="PLLAVA RESULTS", theme=pllava_theme) as demo:
             show_video = gr.Video(interactive=False)
 
         with gr.Column():
-            button_reload = gr.Button(value='Reload From The Evaluation/Inference Root Directory')
+            button_reload = gr.Button(value='Reload From The Judge/Infer Root Directory')
             result_index = gr.Slider(0, 0, step=1, label="Index")
 
-            result_dir_first = gr.Dropdown(label='Test Result Path')
+            result_dir_first = gr.Dropdown(label='Infer Result Path')
             info_first = gr.Text(interactive=False, label='Detailed Output Information')
-            result_dir_second = gr.Dropdown(label='Test Result Path')
+            result_dir_second = gr.Dropdown(label='Infer Result Path')
             info_second = gr.Text(interactive=False, label='Detailed Output Information')
         
 

@@ -103,7 +103,7 @@ if __name__ == "__main__":
                         choices=["VideoChatGPT", "Video-LLaMA-2", "VideoChat2", "VideoLLaVA", "LLaMA-VID",
                                  "PLLaVA", "LLaVA-NeXT-Video", "ShareGPT4Video", "LLaVA", "Qwen2.5-VL",
                                  "Video-LLaMA-2-7B","Video-LLaMA-2-13B", "LLaMA-VID-13B", "PLLaVA-13B",
-                                 "LLaVA-NeXT-Video-34B"]
+                                 "LLaVA-NeXT-Video-34B", "Valley"]
                         )
     parser.add_argument("--dataset_path", type=str,default='Data/test_data.json')
     parser.add_argument("--video_path", type=str, help="path to downloaded video file")

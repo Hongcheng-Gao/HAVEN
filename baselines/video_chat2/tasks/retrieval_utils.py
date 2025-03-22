@@ -93,7 +93,7 @@ def evaluation(model, data_loader, tokenizer, device, config):
     model.eval()
 
     metric_logger = MetricLogger(delimiter="  ")
-    header = "Evaluation:"
+    header = "Judge:"
     dtype = torch.half if config.fp16 else torch.float
     media_type = data_loader.dataset.media_type
     logger.info(f"Start evaluation for media_type={media_type}")
@@ -386,7 +386,7 @@ def evaluation(model, data_loader, tokenizer, device, config):
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
-    logger.info(f"Evaluation time {total_time_str}")
+    logger.info(f"Judge time {total_time_str}")
 
     return (
         i2t_scores_x.cpu().numpy(),

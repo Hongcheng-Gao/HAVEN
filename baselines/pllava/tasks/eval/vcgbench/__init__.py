@@ -218,7 +218,7 @@ def save_results(result_list, save_path, model="gpt-3.5-turbo-0125"):
     with Pool(7) as pool:
         # result_list = pool.map(partial(chatgpt_eval, model=model), result_list)
         func = partial(chatgpt_eval, model=model)
-        result_list = [ res for res in tqdm.tqdm(pool.imap_unordered(func, result_list), total=len(result_list), desc='Language Chat Model Automated Evaluation...')]
+        result_list = [ res for res in tqdm.tqdm(pool.imap_unordered(func, result_list), total=len(result_list), desc='Language Chat Model Automated Judge...')]
 
     final_res, acc_dict = {}, {}
     correct, total, total_score = 0, 0, 0

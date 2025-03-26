@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="">Website</a> •
-  <a href="">Paper</a> •
+  <a href="https://arxiv.org/abs/2503.19622">Paper</a>•
   <a href="./Data/test_data.json">Data</a> 
 </p>
 

@@ -129,6 +129,14 @@ echo "Inference and judgement completed!"
 ## ✍️ Citation
 If you find our work helpful, please cite as
 ```
-
+@misc{gao2025exploringhallucinationlargemultimodal,
+      title={Exploring Hallucination of Large Multimodal Models in Video Understanding: Benchmark, Analysis and Mitigation}, 
+      author={Hongcheng Gao and Jiashu Qu and Jingyi Tang and Baolong Bi and Yue Liu and Hongyu Chen and Li Liang and Li Su and Qingming Huang},
+      year={2025},
+      eprint={2503.19622},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2503.19622}, 
+}
 ```
 

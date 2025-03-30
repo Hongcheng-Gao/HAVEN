@@ -7,6 +7,7 @@
 </p>
 
 ## 📰 News
+- **2025-03-26**: We released the [paper](https://arxiv.org/abs/2503.19622) at arxiv. 
 - **2025-03-20**: We released a subset of HAVEN dataset containing 1,200 questions and evaluation code. 
 
 
